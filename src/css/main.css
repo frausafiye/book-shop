@@ -1,0 +1,143 @@
+/**
+ * /*
+ * =============== 
+ * Variables
+ * ===============
+ *
+ * @format
+ */
+
+:root {
+  --clr-primary-1: rgb(200, 153, 45);
+  --clr-primary-2: rgb(233, 185, 73);
+  --clr-primary-3: rgb(233, 173, 61);
+  --clr-primary-4: rgb(252, 238, 197);
+  --clr-primary-5: rgb(253, 250, 235);
+  --clr-grey-1: rgb(16, 42, 66);
+  --clr-grey-2: rgb(97, 125, 152);
+  --clr-grey-3: rgb(241, 245, 248);
+  --ff-primary: "Roboto", sans-serif;
+  --ff-secondary: "Open Sans", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+/*
+=============== 
+Reset
+===============
+*/
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+=============== 
+Global Styles
+===============
+*/
+
+.app {
+  font-family: var(--ff-primary);
+  background: white;
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  font-size: 20px;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--clr-grey-2);
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/*
+=============== 
+Global Classes
+===============
+*/
+
+.btn {
+  background: brown;
+  color: wheat;
+  padding: 0.375rem 0.75rem;
+  display: inline-block;
+  font-weight: 700;
+  transition: var(--transition);
+  font-size: 0.875rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius);
+}
+.btn:hover {
+  color: brown;
+  background-color: var(--clr-primary-3);
+}
+.btn:disabled {
+  background-color: var(--clr-grey-3);
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+}

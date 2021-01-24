@@ -1,0 +1,118 @@
+/** @format */
+
+.books {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+.changedColor {
+  opacity: 0.5;
+}
+.book {
+  display: grid;
+  grid-template-columns: 1fr 2fr 6fr 2fr;
+  background-color: var(--clr-primary-4);
+  box-shadow: var(--shadow);
+  align-items: center;
+  text-align: center;
+  height: 190px;
+}
+.book-btn {
+  margin: 10px 0px;
+  height: 25%;
+  width: 80%;
+  font-family: var(--ff-secondary);
+}
+.more {
+  width: 300px;
+  align-self: center;
+}
+.book-img {
+  height: 85%;
+}
+.book-info {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  line-height: 20%;
+  letter-spacing: 20%;
+}
+input[type="number"] {
+  height: 30px;
+  width: 40px;
+  background-color: brown;
+  padding: 5px;
+  border-radius: 10%;
+  border: 1px solid transparent;
+  color: wheat;
+}
+.warning-box {
+  width: 80vw;
+  margin: 0 auto;
+  background-color: brown;
+  color: white;
+  text-align: center;
+  padding: 40px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  position: fixed;
+  left: 10vw;
+  right: 10vw;
+  bottom: 50vh;
+  z-index: 2;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .section {
+    padding: 2rem;
+  }
+  .books {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .books {
+    padding: 1rem 0;
+  }
+  .books .book {
+    display: flex;
+    flex-flow: column nowrap;
+    height: fit-content;
+    padding-bottom: 2rem;
+  }
+  .book h3 {
+    margin-top: 10px;
+  }
+  .book img {
+    height: 200px;
+  }
+  .book-info {
+    padding: 20px 5px;
+    height: 180px;
+  }
+  .book-info .more {
+    width: fit-content;
+  }
+}
+@media screen and (max-width: 767px) {
+  .section {
+    padding: 2rem;
+  }
+
+  .books .book {
+    display: flex;
+    flex-flow: column nowrap;
+    height: fit-content;
+    padding-bottom: 2rem;
+  }
+  .book h3 {
+    margin-top: 10px;
+  }
+  .book-info .more {
+    width: fit-content;
+  }
+}
