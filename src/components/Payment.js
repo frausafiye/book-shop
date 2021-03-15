@@ -1,14 +1,15 @@
-import React from 'react'
+import React,{useState} from 'react'
 import PaymentSteps from './payment-steps/PaymentSteps'
-import {Link} from "react-router-dom"
+import PPB from "./PPB"
 
-export default function Payment() {
+export default function Payment(props) {
+  const [showPaypal,setShowPaypal]=useState(true)
   return (
     <div>
-     <PaymentSteps active='second'/>
-     <div style={{margin:'20px 10px',position:'absolute',right:'10px'}}>
-     <Link to='/sendingInfo'><button className='btn'>Check your order</button></Link>
+      <PaymentSteps active='second'/>
+      <div style={{width:"100%",textAlign:"center"}}>
+      {showPaypal && <PPB total={props.location.query}/>}
+      </div>
     </div>
-    </div>
-  )
+);
 }

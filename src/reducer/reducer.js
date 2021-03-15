@@ -14,9 +14,8 @@ const reducer=(state=initialBooks,action)=>{
     }
     case 'addCart':{
       return {...state,cart:[...state.cart,action.payload],totalCartPrice:state.totalCartPrice+action.payload.price} 
-      }
+    }
     case 'removeFromCart':{
-      
       let otherCartItems=state.cart.filter(book=>book!==action.payload)
       return {...state,cart:otherCartItems,totalCartPrice:state.totalCartPrice-=action.payload.price*action.payload.quantity}
     }
@@ -26,13 +25,12 @@ const reducer=(state=initialBooks,action)=>{
     }
     case 'changeAmount':{
       let copyState={...state};
-      let bookInBooks=copyState.cart.find(item=>{
-      return item.id===action.payload.book.id})
-      let index=copyState.books.indexOf(bookInBooks);
-      bookInBooks.quantity=parseInt(action.payload.newAmount);
-      copyState.books.splice(index,1,bookInBooks)
-      console.log(copyState);
-      return {...copyState}}
+      let bookObj=copyState.cart.find(item=> item.id===action.payload.book.id)
+      bookObj.quantity=parseInt(action.payload.newAmount)
+      let index=copyState.cart.indexOf(bookObj);
+      copyState.cart.splice(index,1,bookObj)
+      return copyState
+    }
     default: 
       return state
   }

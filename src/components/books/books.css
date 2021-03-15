@@ -39,7 +39,6 @@
   padding-top: 20px;
   padding-bottom: 20px;
   line-height: 20%;
-  letter-spacing: 20%;
 }
 input[type="number"] {
   height: 30px;
@@ -67,6 +66,22 @@ input[type="number"] {
   box-shadow: var(--shadow);
   border-radius: var(--radius);
 }
+.warning-box p {
+  color: white;
+}
+.amount-box {
+  padding: 10px;
+  border: 2px solid brown;
+  width: fit-content;
+  margin: 10px auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.checkout-box {
+  text-align: center;
+}
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .section {
     padding: 2rem;
@@ -74,10 +89,9 @@ input[type="number"] {
   .books {
     display: grid;
     grid-template-columns: 1fr 1fr;
-  }
-  .books {
     padding: 1rem 0;
   }
+
   .books .book {
     display: flex;
     flex-flow: column nowrap;

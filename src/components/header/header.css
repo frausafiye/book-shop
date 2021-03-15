@@ -43,8 +43,7 @@ label input {
   border-bottom: 4px solid brown;
 }
 .nav-links {
-  display: "flex";
-  justify-content: "space-between";
+  display: flex;
   flex-flow: row wrap;
   margin: 10px auto;
   width: 95%;

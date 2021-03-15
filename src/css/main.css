@@ -1,11 +1,4 @@
-/**
- * /*
- * =============== 
- * Variables
- * ===============
- *
- * @format
- */
+/** @format */
 
 :root {
   --clr-primary-1: rgb(200, 153, 45);
@@ -23,11 +16,6 @@
   --radius: 0.5rem;
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-/*
-=============== 
-Reset
-===============
-*/
 *,
 ::after,
 ::before {
@@ -35,12 +23,6 @@ Reset
   padding: 0;
   box-sizing: border-box;
 }
-
-/*
-=============== 
-Global Styles
-===============
-*/
 
 .app {
   font-family: var(--ff-primary);
@@ -105,11 +87,6 @@ p {
     line-height: 1;
   }
 }
-/*
-=============== 
-Global Classes
-===============
-*/
 
 .btn {
   background: brown;

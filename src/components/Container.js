@@ -14,7 +14,6 @@ import reducer from '../reducer/reducer'
    })
 
 export default function Container(props) {
-
   return (
     <Provider store={myStore}>
       {props.children}
