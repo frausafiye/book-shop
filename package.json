@@ -2,7 +2,7 @@
   "name": "my-new-react-project",
   "version": "0.1.0",
   "private": true,
-  "homepage":".",
+  "homepage":"http://frausafiye.github.io/bookShopper",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
