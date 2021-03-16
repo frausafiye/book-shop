@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import PaymentSteps from './payment-steps/PaymentSteps'
 
 export default function SendingInfo(props) {
-  console.log(props.history.location.state)
   const [totalInfo,setTotalInfo]=useState(props.history.location.state)
   return (
     <div>

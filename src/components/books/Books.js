@@ -50,7 +50,7 @@ const Books = (props) => {
   }
 
     return (<div>
-      {props.page==="cart" && <PaymentSteps/>}
+      {props.page==="cart" && <PaymentSteps active="first"/>}
       <section className = "section" >
         <div className = "section-center books" > 
           {alert&& <div className="warning-box">

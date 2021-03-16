@@ -47,7 +47,6 @@ class PPB extends React.Component {
     }
   }
   createOrder = (data, actions) => {
-    console.log(data)
     return actions.order.create({
       purchase_units: [
         {
@@ -67,7 +66,6 @@ class PPB extends React.Component {
         payerID: data.payerID,
         orderID: data.orderID
       };
-      console.log("Payment Approved: ", paymentData);
       this.setState({ showButtons: false, paid: true });
     });
   };
