@@ -116,3 +116,13 @@ p {
   margin: 0 auto;
   max-width: 1170px;
 }
+.paypal-container {
+  margin: 30px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.paypal-container div {
+  width: 60%;
+  max-width: 600px;
+}

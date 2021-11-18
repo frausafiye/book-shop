@@ -2,12 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import scriptLoader from "react-async-script-loader";
 import Spinner from "./Spinner";
-import { withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 let PayPalButton = null;
 
 class PPB extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -40,7 +39,7 @@ class PPB extends React.Component {
       if (isScriptLoadSucceed) {
         PayPalButton = window.paypal.Buttons.driver("react", {
           React,
-          ReactDOM
+          ReactDOM,
         });
         this.setState({ loading: false, showButtons: true });
       }
@@ -53,18 +52,18 @@ class PPB extends React.Component {
           description: +"BookShopper books",
           amount: {
             currency_code: "USD",
-            value: this.props.total
-          }
-        }
-      ]
+            value: this.props.total,
+          },
+        },
+      ],
     });
   };
 
   onApprove = (data, actions) => {
-    actions.order.capture().then(details => {
+    actions.order.capture().then((details) => {
       const paymentData = {
         payerID: data.payerID,
-        orderID: data.orderID
+        orderID: data.orderID,
       };
       this.setState({ showButtons: false, paid: true });
     });
@@ -74,8 +73,8 @@ class PPB extends React.Component {
     const { showButtons, loading, paid } = this.state;
 
     return (
-      <div className="main">
-        {loading && <Spinner/>}
+      <div className="main paypal-container">
+        {loading && <Spinner />}
 
         {showButtons && (
           <PayPalButton
@@ -83,15 +82,24 @@ class PPB extends React.Component {
             onApprove={(data, actions) => this.onApprove(data, actions)}
           />
         )}
-        <button 
-          onClick={()=>{this.setState({paid:true})}}
-          className="btn">Paid True-Testing</button>
-        {paid && 
-          this.props.history.push({pathname:"/sendingInfo",state:{total:this.props.total, paypal:window.paypal}})
-        }
+        <button
+          onClick={() => {
+            this.setState({ paid: true });
+          }}
+          className="btn"
+        >
+          Paid True-Testing
+        </button>
+        {paid &&
+          this.props.history.push({
+            pathname: "/sendingInfo",
+            state: { total: this.props.total, paypal: window.paypal },
+          })}
       </div>
     );
   }
 }
 
-export default scriptLoader(`https://www.paypal.com/sdk/js?client-id=ATfnR8lDqSthpSx1-nzhIOXuzajVh5dwHMXvIXvoe6vqBplDhH4GRgvQAAC-6G9FGv8PEmo0MhRYgWG8`)(withRouter(PPB))
+export default scriptLoader(
+  `https://www.paypal.com/sdk/js?client-id=ATfnR8lDqSthpSx1-nzhIOXuzajVh5dwHMXvIXvoe6vqBplDhH4GRgvQAAC-6G9FGv8PEmo0MhRYgWG8`
+)(withRouter(PPB));

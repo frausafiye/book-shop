@@ -39,9 +39,16 @@ label input {
   background-color: inherit;
   border: 5px solid transparent;
   border-bottom: 4px solid brown;
+  font-family: "Times New Roman", Times, serif;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
 }
 .nav-links {
   display: flex;
+  justify-content: center;
   flex-flow: row wrap;
   margin: 10px auto;
   width: 95%;
