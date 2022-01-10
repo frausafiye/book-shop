@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import "./book/books.css";
 import Book from "./book/Book";
 
@@ -7,18 +7,8 @@ const Books = (props) => {
   let books = useSelector((state) => state.books);
   let cartItems = useSelector((state) => state.cart);
   let alert = useSelector((state) => state.alert);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    let totalOfCart = cartItems.reduce((acc, item) => {
-      return (acc = acc + item.price * item.quantity);
-    }, 0);
-    dispatch({ type: "setTotal", payload: totalOfCart });
-    let totalArticles = cartItems.reduce((acc, item) => {
-      return (acc = acc + parseInt(item.quantity));
-    }, 0);
-    dispatch({ type: "setArticles", payload: totalArticles });
-  }, [cartItems]);
+  useEffect(() => {}, [cartItems]);
 
   return (
     <div>
@@ -33,7 +23,9 @@ const Books = (props) => {
             </div>
           )}
           {books &&
-            books.map((bookObj, i) => <Book index={i} book={bookObj} />)}
+            books.map((bookObj, i) => (
+              <Book key={i} index={i} book={bookObj} />
+            ))}
         </div>
       </section>
     </div>

@@ -6,7 +6,7 @@ import reducer from "../reducer/reducer";
 
 const persistedState = localStorage.getItem("reduxState-shopping-app")
   ? JSON.parse(localStorage.getItem("reduxState-shopping-app"))
-  : { books: [], cart: [], favorites: [], total: 0, articles: 0, alert: false };
+  : { books: [], cart: [], favorites: [], alert: false };
 
 const myStore = createStore(reducer, persistedState, applyMiddleware(thunk));
 myStore.subscribe(() => {

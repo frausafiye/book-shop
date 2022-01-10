@@ -3,7 +3,11 @@ import { useSelector } from "react-redux";
 import PaymentSteps from "./payment-steps/PaymentSteps";
 
 export default function SendingInfo(props) {
-  let total = useSelector((state) => state.total);
+  let cartItems = useSelector((state) => state.cart);
+  let total = cartItems.reduce(
+    (sum, cartItem) => sum + cartItem.quantity * cartItem.price,
+    0
+  );
   return (
     <div>
       <PaymentSteps active="third" />

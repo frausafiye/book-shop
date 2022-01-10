@@ -27,7 +27,7 @@ export default function Book(props) {
           More
         </a>
       </div>
-      <BookButtons book={props.book} />
+      <BookButtons book={props.book} calculateTotal={props.calculateTotal} />
     </div>
   );
 }

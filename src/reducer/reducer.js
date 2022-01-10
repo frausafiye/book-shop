@@ -2,9 +2,7 @@ const initialState = {
   books: [],
   cart: [],
   favorites: [],
-  total: 0,
   alert: false,
-  articles: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -22,7 +20,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cart: [...state.cart, action.payload],
-        total: state.total + action.payload.price,
       };
     }
     case "removeFromCart": {
@@ -30,7 +27,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cart: otherCartItems,
-        total: (state.total -= action.payload.price * action.payload.quantity),
       };
     }
     case "removeFromFavorites": {
@@ -47,16 +43,11 @@ const reducer = (state = initialState, action) => {
       bookObj.quantity = parseInt(action.payload.newAmount);
       let index = copyState.cart.indexOf(bookObj);
       copyState.cart.splice(index, 1, bookObj);
+      console.log("copyState:", copyState);
       return copyState;
     }
     case "setAlert": {
       return { ...state, alert: action.payload.alert };
-    }
-    case "setTotal": {
-      return { ...state, total: action.payload };
-    }
-    case "setArticles": {
-      return { ...state, articles: action.payload };
     }
     default:
       return state;

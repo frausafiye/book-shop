@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 
-export default function BookButtons({ book }) {
+export default function BookButtons({ book, calculateTotal }) {
   const location = useLocation();
   const dispatch = useDispatch();
   let cartItems = useSelector((state) => state.cart);
+  const [showWarning, setShowWarning] = useState(false);
 
   const changeNumberFunc = (bookObj, e) => {
-    dispatch({
-      type: "changeAmount",
-      payload: { book: bookObj, newAmount: e.target.value },
-    });
+    if (e.target.value === "0") {
+      setShowWarning(true);
+      setTimeout(() => {
+        setShowWarning(false);
+      }, 2000);
+      e.target.value = "1";
+    } else {
+      dispatch({
+        type: "changeAmount",
+        payload: { book: bookObj, newAmount: e.target.value },
+      });
+      calculateTotal();
+    }
   };
 
   const toAddFavorites = (bookObj, e) => {
@@ -39,20 +49,26 @@ export default function BookButtons({ book }) {
       {location.pathname === "/" && (
         <>
           <button className="btn book-btn" onClick={() => addToCart(book)}>
-            {" "}
             Add to cart
           </button>
           <button
             className="btn book-btn"
             onClick={(e) => toAddFavorites(book, e)}
           >
-            {" "}
             Add to favorites
           </button>
         </>
       )}
       {location.pathname === "/cart" && (
         <>
+          {showWarning && (
+            <div className="warning-box">
+              <p>
+                Please click on remove from cart button to remove the book from
+                cart
+              </p>
+            </div>
+          )}
           <div>
             <button
               className="btn book-btn"
@@ -63,14 +79,12 @@ export default function BookButtons({ book }) {
                 })
               }
             >
-              {" "}
               Remove from cart
             </button>
             <button
               className="btn book-btn"
               onClick={(e) => toAddFavorites(book, e)}
             >
-              {" "}
               Add to favorites
             </button>
           </div>
@@ -78,7 +92,7 @@ export default function BookButtons({ book }) {
             type="number"
             name="number"
             min="0"
-            value={book.quantity}
+            defaultValue={book.quantity}
             onChange={(e) => changeNumberFunc(book, e)}
           />
         </>
@@ -86,7 +100,6 @@ export default function BookButtons({ book }) {
       {location.pathname === "/watch" && (
         <>
           <button className="btn book-btn" onClick={() => addToCart(book)}>
-            {" "}
             Add to cart
           </button>
           <button
@@ -98,7 +111,6 @@ export default function BookButtons({ book }) {
               })
             }
           >
-            {" "}
             Remove from favorites
           </button>
         </>
