@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import BookButtons from "./BookButtons";
+import BookInfo from "./BookInfo";
 
 export default function Book(props) {
   let alert = useSelector((state) => state.alert);
@@ -18,15 +19,7 @@ export default function Book(props) {
           className={"book-img"}
         />
       </div>
-      <div className="book-info">
-        <h4> {props.book.volumeInfo.title} </h4>
-        <p> {props.book.volumeInfo.authors} </p>
-        <p> Related Categories: {props.book.volumeInfo.categories} </p>
-        <p> Price:{props.book.price}€ </p>
-        <a href={props.book.volumeInfo.infoLink} className="btn more">
-          More
-        </a>
-      </div>
+      <BookInfo book={props.book} />
       <BookButtons book={props.book} calculateTotal={props.calculateTotal} />
     </div>
   );

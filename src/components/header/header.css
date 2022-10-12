@@ -68,8 +68,11 @@ select:focus {
   transition: var(--transition);
   cursor: pointer;
 }
-.nav-link:active {
+.nav-link.active {
   color: brown;
+  font-size: 1.4rem;
+  position: relative;
+  bottom: 5px;
 }
 .icons {
   display: flex;

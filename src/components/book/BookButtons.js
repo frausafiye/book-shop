@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
+import BookButtonTypes from "./BookButtonTypes";
 
 export default function BookButtons({ book, calculateTotal }) {
   const location = useLocation();
   const dispatch = useDispatch();
-  let cartItems = useSelector((state) => state.cart);
   const [showWarning, setShowWarning] = useState(false);
 
   const changeNumberFunc = (bookObj, e) => {
@@ -24,39 +24,18 @@ export default function BookButtons({ book, calculateTotal }) {
     }
   };
 
-  const toAddFavorites = (bookObj, e) => {
-    e.target.disabled = true;
-    dispatch({ type: "addFavorites", payload: bookObj });
-  };
-  const addToCart = (bookObj) => {
-    if (
-      cartItems.filter(
-        (book) =>
-          book.volumeInfo.title === bookObj.volumeInfo.title &&
-          book.volumeInfo.infoLink === bookObj.volumeInfo.infoLink
-      ).length > 0
-    ) {
-      dispatch({ type: "setAlert", payload: { alert: true } });
-      setTimeout(() => {
-        dispatch({ type: "setAlert", payload: { alert: false } });
-      }, 2000);
-    } else {
-      dispatch({ type: "addCart", payload: bookObj });
-    }
-  };
   return (
     <div>
       {location.pathname === "/" && (
         <>
-          <button className="btn book-btn" onClick={() => addToCart(book)}>
-            Add to cart
-          </button>
-          <button
-            className="btn book-btn"
-            onClick={(e) => toAddFavorites(book, e)}
-          >
-            Add to favorites
-          </button>
+          <BookButtonTypes type="addToCart" book={book} />
+          <BookButtonTypes type="addToFavorites" book={book} />
+        </>
+      )}
+      {location.pathname === "/watch" && (
+        <>
+          <BookButtonTypes type="addToCart" book={book} />
+          <BookButtonTypes type="removeFromFavorites" book={book} />
         </>
       )}
       {location.pathname === "/cart" && (
@@ -70,23 +49,8 @@ export default function BookButtons({ book, calculateTotal }) {
             </div>
           )}
           <div>
-            <button
-              className="btn book-btn"
-              onClick={() =>
-                dispatch({
-                  type: "removeFromCart",
-                  payload: book,
-                })
-              }
-            >
-              Remove from cart
-            </button>
-            <button
-              className="btn book-btn"
-              onClick={(e) => toAddFavorites(book, e)}
-            >
-              Add to favorites
-            </button>
+            <BookButtonTypes type="removeFromCart" book={book} />
+            <BookButtonTypes type="addFavorites" book={book} />
           </div>
           <input
             type="number"
@@ -95,24 +59,6 @@ export default function BookButtons({ book, calculateTotal }) {
             defaultValue={book.quantity}
             onChange={(e) => changeNumberFunc(book, e)}
           />
-        </>
-      )}
-      {location.pathname === "/watch" && (
-        <>
-          <button className="btn book-btn" onClick={() => addToCart(book)}>
-            Add to cart
-          </button>
-          <button
-            className="btn book-btn"
-            onClick={() =>
-              dispatch({
-                type: "removeFromFavorites",
-                payload: book,
-              })
-            }
-          >
-            Remove from favorites
-          </button>
         </>
       )}
     </div>
