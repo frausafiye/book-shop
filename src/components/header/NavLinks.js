@@ -25,7 +25,9 @@ export default function Navlinks(props) {
               arg: e.target.innerHTML,
               type: "category",
             });
-            history.push("/");
+            if (history.location.pathname !== "/") {
+              history.push("/");
+            }
           }}
           className={
             clickedCategorie === genre ? "nav-link active" : "nav-link"
