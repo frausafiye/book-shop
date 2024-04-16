@@ -50,7 +50,7 @@ export default function BookButtons({ book, calculateTotal }) {
           )}
           <div>
             <BookButtonTypes type="removeFromCart" book={book} />
-            <BookButtonTypes type="addFavorites" book={book} />
+            <BookButtonTypes type="addToFavorites" book={book} />
           </div>
           <input
             type="number"

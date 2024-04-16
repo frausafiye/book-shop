@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Navlinks(props) {
-  const history = useHistory();
+  let navigate = useNavigate();
+  const location = useLocation();
   const categories = [
     "Romance",
     "Adventure",
@@ -25,8 +26,8 @@ export default function Navlinks(props) {
               arg: e.target.innerHTML,
               type: "category",
             });
-            if (history.location.pathname !== "/") {
-              history.push("/");
+            if (location.pathname !== "/") {
+              navigate("/");
             }
           }}
           className={

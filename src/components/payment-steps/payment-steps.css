@@ -1,13 +1,16 @@
 .steps {
-  background-color: brown;
+  width: 100%;
+  background-color: var(--clr-secondary-dark);
+  color: var(--clr-text-light);
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
+  align-items: center;
   gap: 30px;
   padding: 20px;
 }
 .step-box {
-  border: 2px solid var(--clr-primary-1);
+  border: 2px solid var(--clr-primary);
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -17,20 +20,19 @@
   align-items: center;
   margin: 20px;
   z-index: 2;
-  background-color: brown;
+  background-color: var(--clr-secondary-dark);
 }
 .active-step {
   padding: 5px;
-  border: 2px solid var(--clr-primary-1);
+  border: 2px solid var(--clr-secondary-light);
   border-radius: 50%;
-  background-color: var(--clr-primary-2);
-  box-shadow: var(--shadow);
+  background-color: var(--clr-secondary-light);
 }
 .arrow-box {
   align-self: center;
 }
 .step {
-  color: var(--clr-primary-1);
+  color: var(--clr-text-light);
   font-size: 60px;
 }
 @media screen and (max-width: 768px) {
@@ -46,4 +48,10 @@
   .step {
     font-size: 30px;
   }
+}
+#paypal-buttons-container {
+  margin: 2rem auto;
+  position: relative;
+  width: 50%;
+  left: 0;
 }

@@ -1,6 +1,6 @@
 import React from "react";
+import { createRoot } from "react-dom/client";
 import App from "./components/App";
-import reactDOM from "react-dom";
 import "./css/main.css";
 import Container from "./components/Container";
 //icons:
@@ -28,9 +28,10 @@ library.add(
   faBars
 );
 
-reactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(
   <Container>
     <App />
-  </Container>,
-  document.getElementById("root")
+  </Container>
 );

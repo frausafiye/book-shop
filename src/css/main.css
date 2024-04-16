@@ -1,18 +1,16 @@
 :root {
-  --clr-primary-1: rgb(200, 153, 45);
-  --clr-primary-2: rgb(233, 185, 73);
-  --clr-primary-3: rgb(233, 173, 61);
-  --clr-primary-4: rgb(252, 238, 197);
-  --clr-primary-5: rgb(253, 250, 235);
-  --clr-grey-1: rgb(16, 42, 66);
-  --clr-grey-2: rgb(97, 125, 152);
-  --clr-grey-3: rgb(241, 245, 248);
-  --ff-primary: "Roboto", sans-serif;
-  --ff-secondary: "Open Sans", sans-serif;
+  --clr-background-grey-light: rgb(225, 223, 219);
+  --clr-background-grey-medium: rgb(166, 166, 164);
+  --clr-background-white: whitesmoke;
+  --clr-secondary-dark: rgb(206, 83, 7);
+  --clr-secondary-light: #dfb2a6;
+  --clr-text-dark: rgb(51, 51, 51);
+  --clr-text-light: #ffffff;
+  --ff-primary: "Open Sans", sans-serif;
   --transition: all 0.3s linear;
   --spacing: 0.25rem;
   --radius: 0.5rem;
-  --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow: 0 5px 15px rgba(51, 51, 51, 0.1);
 }
 *,
 ::after,
@@ -24,8 +22,6 @@
 
 .app {
   font-family: var(--ff-primary);
-  background: white;
-  color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;
 }
@@ -60,7 +56,6 @@ h4 {
 }
 p {
   margin-bottom: 1.25rem;
-  color: var(--clr-grey-2);
 }
 @media screen and (min-width: 768px) {
   h1 {
@@ -87,34 +82,31 @@ p {
 }
 
 .btn {
-  background: brown;
-  color: wheat;
-  padding: 0.375rem 0.75rem;
+  background: var(--clr-secondary-dark);
+  color: var(--clr-text-light);
+  padding: 10px 20px;
   display: inline-block;
+  font-family: var(--ff-secondary);
   font-weight: 700;
   transition: var(--transition);
   font-size: 0.875rem;
-  border: 2px solid transparent;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-color: var(--clr-secondary);
   border-radius: var(--radius);
 }
 .btn:hover {
-  color: brown;
-  background-color: var(--clr-primary-3);
-}
-.btn:disabled {
-  background-color: var(--clr-grey-3);
+  transform: scaleX(1.1);
 }
 
 .section {
   padding: 5rem 0;
+  background-color: var(--clr-background-grey-light);
+  min-height: 80vh;
 }
 
 .section-center {
   width: 90vw;
   margin: 0 auto;
-  max-width: 1170px;
 }
 .paypal-container {
   margin: 30px;

@@ -1,7 +1,8 @@
 .nav {
-  background: var(--clr-primary-5);
+  background: var(--clr-background-white);
   box-shadow: var(--shadow);
-  height: 13rem;
+  font-family: var(--ff-secondary);
+  font-weight: bold;
   display: flex;
   flex-flow: column nowrap;
   position: relative;
@@ -11,6 +12,7 @@
 }
 .logo {
   width: 120px;
+  height: 120px;
   border-radius: 20px;
 }
 
@@ -22,9 +24,14 @@
 .nav-first-line {
   width: 95%;
   margin: auto;
+  margin-top: 10px;
   justify-content: space-between;
 }
-
+.nav-first-line form label {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
 label {
   justify-self: center;
   display: flex;
@@ -38,13 +45,25 @@ label input {
   font-size: 1.5rem;
   background-color: inherit;
   border: 5px solid transparent;
-  border-bottom: 4px solid brown;
+  border-bottom: 4px solid var(--clr-secondary-dark);
   font-family: "Times New Roman", Times, serif;
+  color: var(--clr-text-dark);
 }
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
+}
+.btn.search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  font-size: 1rem;
+}
+.search-button:hover {
+  transform: scale(1.1);
+  font-size: 1.2em;
 }
 .nav-links {
   display: flex;
@@ -62,45 +81,47 @@ select:focus {
   margin-left: 5px;
   margin-right: 5px;
   padding: 2px 8px;
-  border-bottom: 2px solid brown;
-  box-shadow: 0 2px wheat;
-  color: var(--clr-grey-2);
+  color: var(--clr-textdark);
   transition: var(--transition);
   cursor: pointer;
 }
 .nav-link.active {
-  color: brown;
   font-size: 1.4rem;
   position: relative;
   bottom: 5px;
 }
+.nav-link li {
+  text-decoration: none;
+}
 .icons {
   display: flex;
   justify-content: center;
+  transition: var(--transition);
+  transform-origin: bottom right;
 }
 .icon {
   font-size: 3rem;
-  color: brown;
-  transition: var(--transition);
+  color: var(--clr-secondary-dark);
 }
 .icon:hover {
-  color: var(--clr-primary-2);
+  transform: scale(1.2);
 }
+
 .counterbox {
-  border: 3px solid wheat;
+  border: 3px solid var(--clr-background-white);
   border-radius: 50%;
-  background-color: brown;
-  color: wheat;
+  background-color: var(--clr-secondary-dark);
+  color: var(--clr-text-light);
   font-size: 50%;
   display: flex;
   justify-content: center;
   width: 30px;
   height: 30px;
   padding: 2px;
-  transform: translate(-5px, -10px);
+  transform: translate(-10px, -10px);
 }
 .nav .horizontal-nav-bars {
-  color: brown;
+  color: var(--clr-secondary-dark);
   font-size: 2rem;
   display: none;
 }
@@ -112,6 +133,7 @@ select:focus {
   }
   .logo {
     width: 70px;
+    height: 70px;
     margin-right: 0;
   }
   label input {
@@ -126,22 +148,27 @@ select:focus {
     transform: translateX(-90px);
     transition: 2s ease;
   }
+  .horizontal-nav:hover .horizontal-nav-bars {
+    display: none;
+  }
 
   .nav .icons {
-    background: var(--clr-primary-5);
+    background: var(--clr-secondary-dark);
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-flow: column;
     position: absolute;
     right: -80px;
-    top: 13vh;
+    top: 1vh;
     width: fit-content;
     padding-top: 20px;
-    padding-left: 15px;
+    padding-left: 10px;
     font-size: 1rem;
     display: none;
+    z-index: 2;
   }
   .nav .icon {
+    color: var(--clr-text-light);
     margin-right: 0;
     margin-bottom: 15px;
     margin-top: 5px;
@@ -151,7 +178,7 @@ select:focus {
     font-size: 2.5rem;
   }
   .counterbox {
-    border: 2px solid wheat;
+    border: 2px solid var(--clr-background-white);
     font-size: 35%;
     display: flex;
     width: 25px;

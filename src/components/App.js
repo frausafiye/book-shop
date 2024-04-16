@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { dataFetchAsync } from "../reducer/middleWare";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Header from "./header/Header";
 import Books from "./Books";
 import Cart from "./Cart";
@@ -29,24 +29,14 @@ const App = () => {
 
   return (
     <HashRouter>
-      <Route
-        render={(props) => (
-          <Header {...props} addInputToState={addInputToState} />
-        )}
-      ></Route>
-      <Switch>
-        <Route exact path="/cart">
-          <Cart />
-        </Route>
-        <Route exact path="/watch">
-          <Favorites />
-        </Route>
-        <Route exact path="/sendingInfo" component={SendingInfo} />
-        <Route exact path="/payment" component={Payment} />
-        <Route exact path="/">
-          <Books />
-        </Route>
-      </Switch>
+      <Header addInputToState={addInputToState} />
+      <Routes>
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/watch" element={<Favorites />} />
+        <Route path="/sendingInfo" element={<SendingInfo />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/" element={<Books />} />
+      </Routes>
     </HashRouter>
   );
 };

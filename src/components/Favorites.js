@@ -13,9 +13,7 @@ const Books = (props) => {
         <div className="section-center books">
           {alert && <WarningMultipleCartItems />}
           {favoriteItems &&
-            favoriteItems.map((bookObj, i) => (
-              <Book index={i} book={bookObj} />
-            ))}
+            favoriteItems.map((bookObj, i) => <Book key={i} book={bookObj} />)}
         </div>
       </section>
     </div>
